@@ -11,7 +11,7 @@ def brute_force(algorithm, target_hash, max_length, charset):
     for length in range(1, max_length + 1):
         combinations = itertools.product(charset, repeat=length)
         for combination in combinations:
-            combination = ''.join(combination)
+            combination = "".join(combination)
             if hash(combination, algorithm) == target_hash:
                 return combination
     return None
@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
     charset = ""
     if args.use_uppercase:
-        charset += string.ascii_uppercase
+        charset = charset + string.ascii_uppercase
     if args.use_lowercase:
-        charset += string.ascii_lowercase
+        charset = charset + string.ascii_lowercase
     if args.use_digits:
-        charset += string.digits
+        charset = charset + string.digits
 
     found_password = brute_force(args.hashing_algorithm, args.target_hash, args.max_length, charset)
 
